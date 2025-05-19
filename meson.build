@@ -1,5 +1,5 @@
-project('atril', 'c', 'cpp', 
-  version: '1.28.2',
+project('atril', 'c', 'cpp',
+  version: '1.30.0',
   meson_version: '>=0.56.0',
   default_options: [
     'warning_level=1',
@@ -221,7 +221,7 @@ c_args = [
   '-Werror=implicit-function-declaration',
   '-DATRIL_COMPILATION',
   '-DPACKAGE_URL="https://mate-desktop.org"',
-  '-include', 'config.h', 
+  '-include', 'config.h',
 ]
 
 cpp_args = [
@@ -235,13 +235,13 @@ cpp_args = [
 # Maintainer mode configuration
 if get_option('maintainer_mode')
   domains = ['G', 'ATK', 'PANGO', 'GDK', 'GDK_PIXBUF', 'GTK', 'MATE', 'LIBGLADE', 'VTE', 'WNCK', 'LIBSOUP']
-  
+
   disable_deprecated_flags = []
   foreach domain : domains
     disable_deprecated_flags += '-D@0@_DISABLE_DEPRECATED'.format(domain)
     disable_deprecated_flags += '-D@0@_DISABLE_SINGLE_INCLUDES'.format(domain)
   endforeach
-  
+
   c_args += disable_deprecated_flags
   cpp_args += disable_deprecated_flags
 endif
